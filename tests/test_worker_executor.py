@@ -5,7 +5,7 @@ Uses mocked Junie (fake_junie.py) and mocked worktree manager — no live Junie 
 
 import asyncio
 import subprocess
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import AsyncMock, MagicMock, patch
 

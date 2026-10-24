@@ -898,7 +898,7 @@ class TestWorkerRegistry:
     @pytest.mark.asyncio
     async def test_register_and_get(self):
         """Test registering and retrieving a worker."""
-        from datetime import datetime
+        from datetime import datetime, timezone
 
         from junie_adapter import WorkerExecution, WorkerRegistry
         from junie_adapter.models import WorkerStatus
@@ -933,7 +933,7 @@ class TestWorkerRegistry:
     @pytest.mark.asyncio
     async def test_complete_worker(self):
         """Test completing a worker updates status."""
-        from datetime import datetime
+        from datetime import datetime, timezone
 
         from junie_adapter import WorkerExecution, WorkerRegistry
         from junie_adapter.models import WorkerStatus
@@ -967,7 +967,7 @@ class TestWorkerRegistry:
     @pytest.mark.asyncio
     async def test_remove_worker(self):
         """Test removing a worker from registry."""
-        from datetime import datetime
+        from datetime import datetime, timezone
 
         from junie_adapter import WorkerExecution, WorkerRegistry
         from junie_adapter.models import WorkerStatus
@@ -1004,7 +1004,7 @@ class TestWorkerRegistry:
     @pytest.mark.asyncio
     async def test_get_active_workers(self):
         """Test getting all active workers."""
-        from datetime import datetime
+        from datetime import datetime, timezone
 
         from junie_adapter import WorkerExecution, WorkerRegistry
         from junie_adapter.models import WorkerStatus

@@ -192,7 +192,7 @@ class TestJunieAdapter:
             )
 
             # Mock execute_worker to return a completed result
-            from datetime import datetime
+            from datetime import datetime, timezone
 
             from junie_adapter.models import WorkerExecution
 
