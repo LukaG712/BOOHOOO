@@ -300,7 +300,7 @@ class TestWorkerExecutionModel:
 
     def test_worker_execution_creation(self):
         """Test that WorkerExecution can be created with all fields."""
-        now = datetime.now()
+        now = datetime.now(timezone.utc)
         we = WorkerExecution(
             worker_id="w1",
             task_id="t1",

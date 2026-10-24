@@ -742,7 +742,7 @@ async def chat_completions(request: Request):
         try:
             from .persistent_store import TaskRecord
 
-            now = datetime.now()
+            now = datetime.now(timezone.utc)
             task_error = None
             if task_status == TaskStatus.FAILED:
                 task_error = (
@@ -808,7 +808,7 @@ async def create_backup(request: Request):
     if not source_db.exists():
         raise HTTPException(status_code=404, detail="Database file not found")
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     backup_name = f"Slinker_backup_{timestamp}.db"
     backup_path = _Slinker_BACKUP_DIR / backup_name
 
@@ -824,7 +824,7 @@ async def create_backup(request: Request):
             "status": "ok",
             "backup_file": backup_name,
             "size_bytes": file_size,
-            "created_at": datetime.now().isoformat(),
+            "created_at": datetime.now(timezone.utc).isoformat(),
         }
     except Exception as e:
         if backup_path.exists():

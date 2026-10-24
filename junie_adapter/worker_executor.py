@@ -226,7 +226,7 @@ async def execute_worker(
     Raises:
         RuntimeError: If isolation mode is REQUIRED and the project is not a Git repo.
     """
-    start_time = datetime.now()
+    start_time = datetime.now(timezone.utc)
     timeout = timeout or config.junie_timeout
 
     # Enforce concurrency limit
@@ -328,7 +328,7 @@ async def execute_worker(
                 timeout=timeout,
             )
 
-            end_time = datetime.now()
+            end_time = datetime.now(timezone.utc)
             stdout = result.answer or ""
             stderr = result.error or ""
             exit_code = 0 if result.status.value == "completed" else 1
@@ -391,7 +391,7 @@ async def execute_worker(
             return final_result
 
         except asyncio.TimeoutError:
-            end_time = datetime.now()
+            end_time = datetime.now(timezone.utc)
             runs_logger.error(f"Worker {worker_id} timed out after {timeout}s")
             timeout_result = WorkerExecution(
                 worker_id=worker_id,
